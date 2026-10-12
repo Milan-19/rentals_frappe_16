@@ -144,34 +144,35 @@ app_license = "mit"
 # ---------------
 # Hook on document methods and events
 
-# doc_events = {
-# 	"*": {
-# 		"on_update": "method",
-# 		"on_cancel": "method",
-# 		"on_trash": "method"
-# 	}
-# }
+doc_events = {
+	# "*": {
+	# 	"on_update": "method",
+	# 	"on_cancel": "method",
+	# 	"on_trash": "method"
+	# }
+    "ToDo": { "before_insert": "rentals.api.todo_before_insert" }
+}
 
 # Scheduled Tasks
 # ---------------
 
-# scheduler_events = {
-# 	"all": [
-# 		"rentals.tasks.all"
-# 	],
-# 	"daily": [
-# 		"rentals.tasks.daily"
-# 	],
-# 	"hourly": [
-# 		"rentals.tasks.hourly"
-# 	],
-# 	"weekly": [
-# 		"rentals.tasks.weekly"
-# 	],
-# 	"monthly": [
-# 		"rentals.tasks.monthly"
-# 	],
-# }
+scheduler_events = {
+	# "all": [
+	# 	"rentals.tasks.all"
+	# ],
+	"daily": [
+		"rentals.tasks.send_daily_rental_reminders"
+	],
+	# "hourly": [
+	# 	"rentals.tasks.hourly"
+	# ],
+	# "weekly": [
+	# 	"rentals.tasks.weekly"
+	# ],
+	# "monthly": [
+	# 	"rentals.tasks.monthly"
+	# ],
+}
 
 # Testing
 # -------
@@ -262,3 +263,4 @@ app_license = "mit"
 # List of apps whose translatable strings should be excluded from this app's translations.
 # ignore_translatable_strings_from = []
 
+fixtures = [ {"dt": "Role", "filters": [["name", "=", "Rental Manager"]]}, {"dt": "Workflow", "filters": [["document_type", "=", "Ride Booking"]]} ]

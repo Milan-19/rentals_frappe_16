@@ -1,0 +1,11 @@
+{% extends "templates/web.html" %}
+{% block page_content %}
+<div class="container my-5">
+    <div class="card shadow-sm p-4">
+        <h2 class="text-primary">{{ doc.make }} {{ doc.model }} ({{ doc.year }})</h2>
+        <p><strong>Color:</strong> {{ doc.color }}</p>
+        <p><strong>License Plate:</strong> {{ doc.license_plate }}</p>
+        <a href="/order-ride?vehicle={{ doc.name }}" class="btn btn-success mt-3">Book This Vehicle</a>
+    </div>
+</div>
+{% endblock %}
